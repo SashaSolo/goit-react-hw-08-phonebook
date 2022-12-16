@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { Field, Form } from 'formik';
 
-export const FormStyle = styled(Form)`
+export const FormStyle = styled.form`
   margin: 0 auto;
   padding: 20px;
-  width: 320px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,9 +14,10 @@ export const Label = styled.label`
   margin: 0 auto;
   text-align: center;
   font-size: 24px;
+  font-weight: 500;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input`
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -39,7 +38,8 @@ export const Button = styled.button`
   cursor: pointer;
 
   &:focus,
-  &:active {
+  &:active,
+  &:hover {
     box-shadow: 0px 0px 2px #bababa, inset 0px 0px 7px #2b1717;
   }
 `;

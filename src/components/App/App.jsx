@@ -43,6 +43,13 @@ class App extends Component {
     console.log(event.currentTarget.value);
     this.setState({ filter: event.currentTarget.value });
   };
+
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
     const { contacts, filter } = this.state;
 

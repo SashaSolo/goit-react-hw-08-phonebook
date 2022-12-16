@@ -3,6 +3,6 @@ import styled from 'styled-components';
 export const InputFilter = styled.label`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   font-weight: 500;
 `;
