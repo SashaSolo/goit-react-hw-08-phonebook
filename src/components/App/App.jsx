@@ -28,6 +28,13 @@ class App extends Component {
     //   });
     // }
   }
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  }
+
   formSubmitForApp = ({ name, number }) => {
     console.log({ name, number });
 
