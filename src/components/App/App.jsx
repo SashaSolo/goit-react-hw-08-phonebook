@@ -15,6 +15,19 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const savedContacts = localStorage.getItem('contact');
+    if (savedContacts !== null) {
+      this.setState({
+        contacts: JSON.parse(savedContacts),
+      });
+    }
+    //  else {
+    //   this.setState({
+    //     contacts: this.props.initialContacts,
+    //   });
+    // }
+  }
   formSubmitForApp = ({ name, number }) => {
     console.log({ name, number });
 
