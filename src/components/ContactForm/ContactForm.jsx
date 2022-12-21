@@ -44,7 +44,7 @@ class ContactForm extends Component {
   render() {
     return (
       <Formik validationSchema={schema}>
-        <FormStyle autoComplete="off" onSubmit={this.handleSubmit}>
+        <FormStyle autoComplete="on" onSubmit={this.handleSubmit}>
           <Label htmlFor="Name"> Name</Label>
           <Input
             name="name"
