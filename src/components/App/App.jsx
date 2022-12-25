@@ -33,7 +33,7 @@ export function App() {
     };
 
     const normalizedName = contact.name.toLowerCase();
-    const compareNames = this.state.contacts.find(
+    const compareNames = contacts.find(
       contactToCompare => contactToCompare.name.toLowerCase() === normalizedName
     );
 
@@ -53,18 +53,18 @@ export function App() {
     // console.log(event.currentTarget.value);
     // this.setState({ filter: event.currentTarget.value });
     setFilter(event.currentTarget.value);
-
-    const normalizedFilter = filter.toLowerCase();
-    const contactsForFilter = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
   };
+
+  const normalizedFilter = filter.toLowerCase();
+  const contactsForFilter = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter)
+  );
 
   const deleteContact = id => {
     // this.setState(prevState => ({
     //   contacts: prevState.contacts.filter(contact => contact.id !== id),
     // }));
-    setContacts(ptrvState => prevState.filter(contact => contact.id !== id));
+    setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
   // componentDidMount() {
