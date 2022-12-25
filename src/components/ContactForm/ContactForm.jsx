@@ -84,5 +84,3 @@ export default function ContactForm({ onSubmitForApp }) {
     </Formik>
   );
 }
-
-// export default ContactForm;
