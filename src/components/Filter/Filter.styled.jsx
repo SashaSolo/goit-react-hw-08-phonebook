@@ -5,4 +5,5 @@ export const InputFilter = styled.label`
   flex-direction: column;
   align-items: center;
   font-weight: 500;
+  margin-top: 30px;
 `;

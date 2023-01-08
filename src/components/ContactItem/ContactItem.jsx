@@ -1,12 +1,20 @@
 import React from 'react';
-import { Button } from './ContactItem.styled';
+
+import PropTypes from 'prop-types';
+import { Item, Button } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number, onDeleteContact }) => {
   return (
-    <li id={id} key={name}>
-      {' '}
+    <Item id={id} key={name}>
       {name} : {number}
       <Button onClick={() => onDeleteContact(id)}>Delete</Button>
-    </li>
+    </Item>
   );
+};
+
+ContactItem.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired,
+  onDeleteContact: PropTypes.func,
 };

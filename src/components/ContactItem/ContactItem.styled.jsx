@@ -9,3 +9,8 @@ export const Button = styled.button`
   border-radius: 5px;
   margin-left: 5px;
 `;
+
+export const Item = styled.li`
+  font-weight: 500;
+  margin-bottom: 4px;
+`;

@@ -1,12 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setStatusFilter } from 'redux/filterSlice';
+import PropTypes from 'prop-types';
 import { Input } from '../ContactForm/ContactForm.styled';
 import { InputFilter } from './Filter.styled';
 
-export const Filter = ({ value, onChangeForFilter }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const handleFilterCheck = event =>
+    dispatch(setStatusFilter(event.currentTarget.value));
+
   return (
     <InputFilter>
       Find contacts by name
-      <Input type="text" value={value} onChange={onChangeForFilter} />
+      <Input type="text" onChange={handleFilterCheck} />
     </InputFilter>
   );
+};
+
+Filter.propTypes = {
+  handleFilterCheck: PropTypes.func,
 };
