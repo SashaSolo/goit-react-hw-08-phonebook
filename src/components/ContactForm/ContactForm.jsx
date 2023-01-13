@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { nanoid } from '@reduxjs/toolkit';
+// import { nanoid } from '@reduxjs/toolkit';
 import { Btn } from 'components/Button/Button';
-import { ContactList } from 'components/ContactList/ContactList';
-import { Filter } from 'components/Filter/Filter';
+// import { ContactList } from 'components/ContactList/ContactList';
+// import { Filter } from 'components/Filter/Filter';
 import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
-import { FormStyle, Label, Input } from './ContactForm.styled.jsx';
+import { FormStyle, Label, Input } from './ContactForm.styled';
 
 export function ContactForm() {
   const dispatch = useDispatch();
@@ -16,13 +16,14 @@ export function ContactForm() {
     event.preventDefault();
 
     const form = event.currentTarget;
+
     const name = form.elements['name'].value;
 
-    const number = Number(form.elements['number'].value);
+    const phone = String(form.elements['phone'].value);
 
     const normalizedName = name.toLowerCase();
 
-    const compareNames = contacts.find(
+    const compareNames = contacts?.find(
       contactToCompare =>
         contactToCompare.name?.toLowerCase() === normalizedName
     );
@@ -32,7 +33,7 @@ export function ContactForm() {
       return;
     }
 
-    dispatch(addContact({ name, number, id: nanoid() }));
+    dispatch(addContact({ name, phone }));
     form.reset();
   };
 
@@ -61,9 +62,9 @@ export function ContactForm() {
 
         <Btn type="submit">Add contact</Btn>
       </FormStyle>
-      {(contacts.length > 0 && <ContactList />) ||
+      {/* {(contacts.length > 0 && <ContactList />) ||
         'There is any contact in the list'}
-      {contacts.length > 0 && <Filter />}
+      {contacts.length > 0 && <Filter />} */}
     </div>
   );
 }
