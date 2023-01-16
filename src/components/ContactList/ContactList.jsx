@@ -24,9 +24,9 @@ export const ContactList = () => {
   const filter = useSelector(getInputFilter);
 
   const getContactFromFilter = (contacts, filter) => {
-    let normalizedFilter = filter?.toLowerCase();
+    let normalizedFilter = filter.toLowerCase();
 
-    return contacts?.filter(contact =>
+    return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
