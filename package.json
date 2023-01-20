@@ -5,10 +5,12 @@
   "homepage": "https://sashasolo.github.io/goit-react-hw-07-phonebook/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
+    "@redux-devtools/extension": "^3.2.3",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "axois": "^0.0.1-security",
     "formik": "^2.2.9",
     "modern-normalize": "^1.1.0",
     "nanoid": "^4.0.0",

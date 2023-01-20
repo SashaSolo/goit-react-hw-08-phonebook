@@ -2,8 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setStatusFilter } from 'redux/filterSlice';
 import PropTypes from 'prop-types';
-import { Input } from '../ContactForm/ContactForm.styled';
 import { InputFilter } from './Filter.styled';
+
+import { Input } from 'components/ContactForm/ContactForm.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();

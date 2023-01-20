@@ -1,14 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { fetchContacts, addContact, deleteContact } from './operations';
-
-const handlePending = state => {
-  state.isLoading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
 
 export const contactsSlice = createSlice({
   name: 'contacts',
@@ -17,32 +8,52 @@ export const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: {
-    [fetchContacts.pending]: handlePending,
-    [fetchContacts.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts = action.payload;
-    },
-    [fetchContacts.rejected]: handleRejected,
-    [addContact.pending]: handlePending,
-    [addContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.contacts.push(action.payload);
-    },
-    [addContact.rejected]: handleRejected,
-    [deleteContact.pending]: handlePending,
-    [deleteContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      const index = state.contacts.findIndex(
-        contact => contact.id === action.payload.id
-      );
-      state.contacts.splice(index, 1);
-    },
-    [deleteContact.rejected]: handleRejected,
-  },
+  extraReducers: builder =>
+    builder
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.contacts = action.payload;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.contacts.push(action.payload);
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        const index = state.contacts.findIndex(
+          contact => contact.id === action.payload.id
+        );
+        state.contacts.splice(index, 1);
+      })
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.pending,
+          addContact.pending,
+          deleteContact.pending
+        ),
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.rejected,
+          deleteContact.rejected,
+          addContact.rejected
+        ),
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchContacts.fulfilled,
+          addContact.fulfilled,
+          deleteContact.fulfilled
+        ),
+        state => {
+          state.isLoading = false;
+          state.error = null;
+        }
+      ),
 });
 
 export const contactsReducer = contactsSlice.reducer;
