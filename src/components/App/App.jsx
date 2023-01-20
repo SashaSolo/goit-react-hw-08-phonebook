@@ -12,6 +12,7 @@ export const App = () => {
 
   return (
     <Container>
+      <h1>Phonebook</h1>
       <ContactForm />
       {isLoading && !error && <b>Request in progress...</b>}
       <ContactList />
