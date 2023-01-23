@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
-import { getLoading, getError } from 'redux/selectors';
+import { getLoading, getError } from 'redux/auth/selectors';
 
 import { Container } from 'components/App/App.styled';
 

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Btn } from 'components/Button/Button';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { getContacts } from 'redux/auth/selectors';
+import { addContact } from 'redux/contacts/contOperations';
 
 import { FormStyle, Label, Input } from './ContactForm.styled';
 
