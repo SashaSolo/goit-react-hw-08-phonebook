@@ -9,11 +9,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
 
-import { contactsReducer } from './contacts/contactsSlice';
+import storage from 'redux-persist/lib/storage';
+import { authReducer } from './auth/authSlice';
+import { contactsReducer } from './contacts/contSlice';
 import { filterReducer } from './filterSlice';
-import { authReducer } from './auth';
 
 const authPersistConfig = {
   key: 'auth',
