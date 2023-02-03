@@ -5,19 +5,19 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/contOperations';
 import { deleteContact } from 'redux/contacts/contOperations';
 import { ContactItem } from 'components/ContactItem/ContactItem';
-import { getContacts, getInputFilter } from 'redux/auth/selectors';
-import { List } from './ContactList.styled';
+import { selectContacts, selectInputFilter } from 'redux/contacts/selectors';
+import { List, Title } from './ContactList.styled';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  // console.log(contacts);
+  const contacts = useSelector(selectContacts);
+  console.log(contacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const filter = useSelector(getInputFilter);
+  const filter = useSelector(selectInputFilter);
 
   const getContactFromFilter = (contacts, filter) => {
     let normalizedFilter = filter.toLowerCase();
@@ -31,16 +31,18 @@ export const ContactList = () => {
 
   return (
     <List>
-      <h2>Contacts</h2>
+      <Title>CONTACTS</Title>
       {visibleContacts.length > 0 &&
-        visibleContacts.map(({ id, name, phone }) => (
+        visibleContacts.map(({ id, name, number }) => (
+          // <Item>
           <ContactItem
             key={id}
             id={id}
             name={name}
-            phone={phone}
+            number={number}
             onDeleteContact={() => dispatch(deleteContact(id))}
           ></ContactItem>
+          // </Item>
         ))}
     </List>
   );
